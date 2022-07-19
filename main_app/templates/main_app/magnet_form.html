@@ -14,6 +14,10 @@
       <!-- Render the inputs inside of <tr>s & <td>s -->
       {{ form.as_table }}
     </table>
-    <input type="submit" value="Add Magnet!" class="btn">
+    {% if object %}
+    <input type="submit" value="Edit Magnet!" class="btn">
+{% else %}
+<input type="submit" value="Add Magnet!" class="btn">
+{% endif %}
   </form>
 {% endblock %}
