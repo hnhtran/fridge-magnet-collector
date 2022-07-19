@@ -7,6 +7,6 @@ urlpatterns = [
     path('magnets/', views.magnets_index, name='index'),
     path('magnets/<int:magnet_id>', views.magnets_detail, name='detail'),
     path('magnets/create', views.MagnetCreate.as_view(), name='magnets_create'),
-    path('magnets/<int:pk>/update', views.MagnetUpdate.as_view(), name='magnet_update'),
-    path('magnets/<int:pk>/delete', views.MagnetDelete.as_view(), name='magnet_delete')
+    path('magnets/<int:pk>/update', views.MagnetUpdate.as_view(), name='magnets_update'),
+    path('magnets/<int:pk>/delete', views.MagnetDelete.as_view(), name='magnets_delete')
 ]
