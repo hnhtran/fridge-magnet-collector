@@ -5,16 +5,17 @@ from django.http import HttpResponse
 # from .models import Magnet
 
 class Magnet:
-    def __init__(self, name, type, description, year):
+    def __init__(self, M_id, name, kind, description, year):
+        self.id = M_id
         self.name = name
-        self.type = type
-        self.descripton = description
+        self.type = kind
+        self.description = description
         self.year = year
 
 magnets = [
-    Magnet('Castle', 'travel', 'Denmark', '2017'),
-    Magnet('Pizza Hut', 'food', 'pizza', '2019'),
-    Magnet('ACountants', 'business card', 'ACountants', '2021')
+    Magnet('1', 'Castle', 'travel', 'Denmark', '2017'),
+    Magnet('2', 'Pizza Hut', 'food', 'pizza', '2019'),
+    Magnet('3', 'ACountants', 'business card', 'ACountants', '2021')
 ]
 
 def home(request):
@@ -25,8 +26,8 @@ def about(request):
 
 def magnets_index(request):
     # magnets = Magnet.objects.all()
-    return render(request, 'cats/index.html', { 'magnets': magnets })
+    return render(request, 'magnets/index.html', { 'magnets': magnets })
 
-# def magnets_detail(request, magnet_id):
+def magnets_detail(request, magnet_id):
 #     magnet = Magnet.objects.get(id=cat_id)
-#     return render(request, 'cats/detail.html', { 'magnet': magnet })
+    return render(request, 'cats/detail.html', { 'magnet': magnet })
