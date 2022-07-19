@@ -1,10 +1,9 @@
 from django.shortcuts import render
-from .models import Magnet
-# Create your views here.
 from django.http import HttpResponse
-# from .models import Magnet
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from .models import Magnet
 
-
+# Create your views here.
 def home(request):
     return HttpResponse('<h1>You are at the home page. Welcome World! Welcome Magnet World!</h1>')
 
@@ -18,6 +17,18 @@ def magnets_index(request):
 def magnets_detail(request, magnet_id):
     magnet = Magnet.objects.get(id=magnet_id)
     return render(request, 'magnets/detail.html', { 'magnet': magnet })
+
+class MagnetCreate(CreateView):
+    model =  Magnet
+    fields = '__all__'
+
+class MagnetUpdate(UpdateView):
+    model =  Magnet
+    fields = ['name', 'description']
+
+class MagnetDelete(DeleteView):
+    model =  Magnet
+    success_url = '/magnets/'
 
 # class Magnet:
 #     def __init__(self, M_id, name, kind, description, year):
