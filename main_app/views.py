@@ -4,19 +4,6 @@ from django.shortcuts import render
 from django.http import HttpResponse
 # from .models import Magnet
 
-class Magnet:
-    def __init__(self, M_id, name, kind, description, year):
-        self.id = M_id
-        self.name = name
-        self.type = kind
-        self.description = description
-        self.year = year
-
-magnets = [
-    Magnet('1', 'Castle', 'travel', 'Denmark', '2017'),
-    Magnet('2', 'Pizza Hut', 'food', 'pizza', '2019'),
-    Magnet('3', 'ACountants', 'business card', 'ACountants', '2021')
-]
 
 def home(request):
     return HttpResponse('<h1>You are at the home page. Welcome World! Welcome Magnet World!</h1>')
@@ -31,3 +18,17 @@ def magnets_index(request):
 def magnets_detail(request, magnet_id):
 #     magnet = Magnet.objects.get(id=cat_id)
     return render(request, 'cats/detail.html', { 'magnet': magnet })
+
+# class Magnet:
+#     def __init__(self, M_id, name, kind, description, year):
+#         self.id = M_id
+#         self.name = name
+#         self.type = kind
+#         self.description = description
+#         self.year = year
+
+# magnets = [
+#     Magnet('1', 'Castle', 'travel', 'Denmark', '2017'),
+#     Magnet('2', 'Pizza Hut', 'food', 'pizza', '2019'),
+#     Magnet('3', 'ACountants', 'business card', 'ACountants', '2021')
+# ]
