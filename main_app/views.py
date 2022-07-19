@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from .models import Magnet
 # Create your views here.
 from django.http import HttpResponse
 # from .models import Magnet
@@ -12,12 +12,12 @@ def about(request):
     return render(request, 'about.html')
 
 def magnets_index(request):
-    # magnets = Magnet.objects.all()
+    magnets = Magnet.objects.all()
     return render(request, 'magnets/index.html', { 'magnets': magnets })
 
 def magnets_detail(request, magnet_id):
-#     magnet = Magnet.objects.get(id=cat_id)
-    return render(request, 'cats/detail.html', { 'magnet': magnet })
+    magnet = Magnet.objects.get(id=magnet_id)
+    return render(request, 'magnets/detail.html', { 'magnet': magnet })
 
 # class Magnet:
 #     def __init__(self, M_id, name, kind, description, year):
