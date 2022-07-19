@@ -21,6 +21,7 @@ def magnets_detail(request, magnet_id):
 class MagnetCreate(CreateView):
     model =  Magnet
     fields = '__all__'
+    success_url = '/magnets/'
 
 class MagnetUpdate(UpdateView):
     model =  Magnet
