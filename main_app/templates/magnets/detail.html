@@ -11,6 +11,10 @@
     <p>Description: {{ magnet.description }}</p>
     <p>Year: {{ magnet.year }}</p>
   </div>
+  <div class="card-action">
+    <a href="{% url 'magnets_update' magnet.id %}">Edit</a>
+    <a href="{% url 'magnets_delete' magnet.id %}">Delete</a>
+  </div>
 </div>
 
 {% endblock %}
