@@ -11,8 +11,8 @@ class Magnet:
         self.year = year
 
 magnets = [
-    Magnet('Castle', 'travel', 'Denmark', '2017')
-    Magnet('Pizza Hut', 'food', 'pizza', '2019')
+    Magnet('Castle', 'travel', 'Denmark', '2017'),
+    Magnet('Pizza Hut', 'food', 'pizza', '2019'),
     Magnet('ACountants', 'business card', 'ACountants', '2021')
 ]
 
