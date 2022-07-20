@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Magnet
+from .forms import SurfaceForm
 
 # Create your views here.
 def home(request):
@@ -16,7 +17,7 @@ def magnets_index(request):
 
 def magnets_detail(request, magnet_id):
     magnet = Magnet.objects.get(id=magnet_id)
-    return render(request, 'magnets/detail.html', { 'magnet': magnet })
+    return render(request, 'magnets/detail.html', { 'magnet': magnet, 'surface_form': SurfaceForm() })
 
 class MagnetCreate(CreateView):
     model =  Magnet
