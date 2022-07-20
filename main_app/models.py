@@ -35,3 +35,6 @@ class Surface(models.Model):
 
     def __str__(self):
         return f'{self.get_where_display()} on {self.date}'
+    
+    class Meta:
+        ordering = ['-date'] # -date means descending order
