@@ -20,7 +20,7 @@
   </div>
 
   <div class="col s6">
-    <form method="POST">
+    <form action="{% url 'add_surface' magnet.id %}" method="POST">
       {% csrf_token %}
       {{ surface_form.as_p}}
       <input type="submit" class="btn" value="Add Display Surface">
