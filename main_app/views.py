@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Magnet
@@ -32,6 +32,14 @@ class MagnetDelete(DeleteView):
     model =  Magnet
     success_url = '/magnets/'
 
+def add_surface(request, magnet_id):
+    form = SurfaceForm(request.POST)
+    if form.is_valid():
+        new_surface = form.save(commit=False)
+        new_surface.magnet_id = magnet_id
+        new_surface.save()
+        return redirect('detail', magnet_id=magnet_id)
+   
 # class Magnet:
 #     def __init__(self, M_id, name, kind, description, year):
 #         self.id = M_id
