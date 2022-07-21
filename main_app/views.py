@@ -58,11 +58,19 @@ class PurposeDetail(DetailView):
 
 class PurposeCreate(CreateView):
     model = Purpose
+    fields = '__all__'
+
+class PurposeUpdate(UpdateView):
+    model = Purpose
     fields = ['name', 'description']
 
 class PurposeDelete(DeleteView):
     model = Purpose
     success_url = '/purposes/'
+
+def assoc_purpose(request, magnet_id, purpose_id):
+    Magnet.objects.get(id=magnet_id).purposes.add(purpose_id)
+    return redirect('detail', magnet_id=magnet_id)
 
    
 # class Magnet:
