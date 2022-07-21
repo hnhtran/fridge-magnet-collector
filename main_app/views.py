@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView
 from .models import Magnet, Purpose
 from .forms import SurfaceForm
 
@@ -29,8 +30,9 @@ def magnets_detail(request, magnet_id):
 
 class MagnetCreate(CreateView):
     model =  Magnet
-    fields = '__all__'
-    success_url = '/magnets/'
+    fields = ['name', 'kind', 'description', 'year']
+    # fields = '__all__'
+    # success_url = '/magnets/'
 
 class MagnetUpdate(UpdateView):
     model =  Magnet
@@ -46,7 +48,11 @@ def add_surface(request, magnet_id):
         new_surface = form.save(commit=False)
         new_surface.magnet_id = magnet_id
         new_surface.save()
-        return redirect('detail', magnet_id=magnet_id)
+    return redirect('detail', magnet_id=magnet_id)
+
+class PurposeList(ListView):
+    model = Purpose
+
    
 # class Magnet:
 #     def __init__(self, M_id, name, kind, description, year):
