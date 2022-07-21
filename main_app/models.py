@@ -14,6 +14,8 @@ class Magnet(models.Model):
     kind = models.CharField(max_length=50)
     description = models.TextField(max_length=250)
     year = models.IntegerField()
+    # add many to many relationship with Purpose
+    purposes = models.ManyToManyField(Purpose)
 
     def __str__(self):
         return self.name
