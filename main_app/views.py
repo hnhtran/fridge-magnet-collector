@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Magnet
+from .models import Magnet, Purpose
 from .forms import SurfaceForm
 
 # Create your views here.
@@ -17,7 +17,15 @@ def magnets_index(request):
 
 def magnets_detail(request, magnet_id):
     magnet = Magnet.objects.get(id=magnet_id)
-    return render(request, 'magnets/detail.html', { 'magnet': magnet, 'surface_form': SurfaceForm() })
+    # create purpose list of purpose id that magnet had
+    purpose_list_id = magnet.purposes.all().values_list('id')
+    # query the purpose that magnet doesnt have
+    purposes_that_magnet_doesnt_have = Purpose.objects.exclude(id__in=purpose_list_id)
+    return render(request, 'magnets/detail.html', { 
+        'magnet': magnet, 
+        'surface_form': SurfaceForm(), 
+        'purposes_that_magnet_doesnt_have': purposes_that_magnet_doesnt_have
+        })
 
 class MagnetCreate(CreateView):
     model =  Magnet
