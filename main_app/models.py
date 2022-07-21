@@ -9,6 +9,17 @@ WHERE = (
         ('OT', 'Other'),
 )
 
+class Purpose(models.Model):
+    name = models.CharField(max_length=50)
+    description = models.CharField(max_length=200)
+    
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={'pk':self.id})
+    
+
 class Magnet(models.Model):
     name = models.CharField(max_length=50)
     kind = models.CharField(max_length=50)
