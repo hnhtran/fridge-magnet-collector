@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Purpose List</h1>
+
+{% for purpose in purpose_list %}
+  <a href="{% url 'purposes_detail' purpose.id %}">
+    <div class="card">
+        <div class="card-content">
+            <span class="card-title">{{ purpose.name }}</span>
+            <p>Description: {{ purpose.description }}</p>
+        </div>
+    </div>
+  </a>
+{% endfor %}
+
+{% endblock %}
