@@ -53,6 +53,17 @@ def add_surface(request, magnet_id):
 class PurposeList(ListView):
     model = Purpose
 
+class PurposeDetail(DetailView):
+    model = Purpose
+
+class PurposeCreate(CreateView):
+    model = Purpose
+    fields = ['name', 'description']
+
+class PurposeDelete(DeleteView):
+    model = Purpose
+    success_url = '/purposes/'
+
    
 # class Magnet:
 #     def __init__(self, M_id, name, kind, description, year):
