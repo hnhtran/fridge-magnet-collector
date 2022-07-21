@@ -63,6 +63,31 @@
     <p>No purposes yet.</p>
     {% endif %}
   </div>
+  <div class="col s6">
+    <h3>Available Purposes</h3>
+    {% if purposes.count %}
+    {% for purpose in purposes.all %}
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">
+          <span>{{purpose.name}}</span>
+          {% if purpose.description %}
+          <span> with further description: {{purpose.description}}</span>
+          {% endif %}
+        </span>
+      </div>
+      <div class="card-action"> 
+        <form action="{% url 'assoc_purpose' magnet.id purpose.id %}" method="POST">
+          {% csrf_token %}
+          <input type="submit" class="btn" value="Add">
+        </form>
+      </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <p>No purposes yet.</p>
+    {% endif %}
+  </div>
 </div>
 
 <script>
