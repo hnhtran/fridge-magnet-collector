@@ -7,7 +7,8 @@ from .forms import SurfaceForm
 
 # Create your views here.
 def home(request):
-    return HttpResponse('<h1>You are at the home page. Welcome World! Welcome Magnet World!</h1>')
+    # return HttpResponse('<h1>You are at the home page. Welcome World! Welcome Magnet World!</h1>')
+    return render(request, 'home.html')
 
 def about(request):
     return render(request, 'about.html')
