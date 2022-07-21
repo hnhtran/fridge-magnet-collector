@@ -17,7 +17,7 @@ class Purpose(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('detail', kwargs={'pk':self.id})
+        return reverse('purposes_detail', kwargs={'pk':self.id})
     
 
 class Magnet(models.Model):

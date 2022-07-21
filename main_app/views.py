@@ -26,7 +26,7 @@ def magnets_detail(request, magnet_id):
     return render(request, 'magnets/detail.html', { 
         'magnet': magnet, 
         'surface_form': SurfaceForm(), 
-        'purposes_that_magnet_doesnt_have': purposes_that_magnet_doesnt_have
+        'purposes': purposes_that_magnet_doesnt_have
         })
 
 class MagnetCreate(CreateView):
